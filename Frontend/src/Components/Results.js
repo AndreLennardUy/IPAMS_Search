@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Results = () => {
+const Results = (props) => {
     return (
         <div>
             <table class="table">
@@ -14,6 +14,18 @@ const Results = () => {
                     <th scope="col">DATE UPLOADED</th>
                 </tr>
                 </thead>
+                <tbody>
+                    {props.data.map((item) => (
+                        <tr>
+                            <th scope='row'>{item.id}</th>
+                            <td>{item.title}</td>
+                            <td>{item.abstract}</td>
+                            <td>{item.psed_classification_id}</td>
+                            <td>{item.for_commercialization}</td>
+                            <td>{item.date_uploaded}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </table>
         </div>
     );
