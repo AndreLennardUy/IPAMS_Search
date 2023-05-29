@@ -19,6 +19,7 @@ from django.urls import path
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from records.api import RecordModelViewSet
+from records.views import TxtaiSearchView
 
 router = DefaultRouter()
 router.register(r'records', RecordModelViewSet)
@@ -26,5 +27,6 @@ router.register(r'records', RecordModelViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('txtai_search/', TxtaiSearchView.as_view(), name='txtai-search'),
 
 ]
