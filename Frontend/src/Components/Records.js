@@ -3,7 +3,6 @@ import filterIcon from '../Util/filter.png';
 import Results from './Results';
 import Header from './Header';
 import Search from './Search';
-import '../Style/Records.css'
 
 const Records = (props) => {
 
@@ -23,11 +22,11 @@ const Records = (props) => {
                             FILTER
                         </button>
                         <p>Filters</p>
-                        <p>showing {props.nowShow} entries</p>
+                        <p>showing {props.data.length} entries</p>
                     </div> 
                     <div className='col-6'>
                         <div class="btn-group">
-                            <p className='numRow'>Show number of rows: </p>
+                            <p className='numRow' style={{margin: 0}}>Show number of rows: </p>
                             <select value={props.nowShow} onChange={(e) => handleShow(e.target.value)}>
                                 <option value="5">5</option>
                                 <option value="10">10</option>
@@ -35,12 +34,10 @@ const Records = (props) => {
                                 <option value="20">20</option>
                             </select>
                         </div>
-                        <div class="d-flex align-items-center p-2">
-                            <p>Total Row: {props.ctr}</p>
-                        </div>
+                        <p>Total Row: {props.ctr}</p>
                     </div>
                     <div className='col'>
-                        <Search/>
+                        <Search onClick = {props.search} rows = {props.total}/>
                     </div>
                 </div>
                 <div className='row align-items-center'>

@@ -9,7 +9,6 @@ function App() {
 
   function handleShow(e){
     setShow(e)
-    console.log(show)
   }
 
   useEffect(() => {
@@ -26,11 +25,32 @@ function App() {
     fetchData();
   }, [show]);
   
-    
+  function handleSearch(searched , result) {
+    try {
+      const fetchData = async () => {
+        try {
+          const res = await axios.get('http://127.0.0.1:8000/txtai_search/', {
+            params: {
+              query: searched,
+              num_results : result
+            }
+          });
+          setData(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+  
+      fetchData();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
 
   return (
     <div className="App">
-      <Records data = {data} show = {handleShow} nowShow = {show} ctr = {ctr}/>
+      <Records data = {data} show = {handleShow} nowShow = {show} ctr = {ctr} search = {handleSearch}/>
     </div>
   );
 }
