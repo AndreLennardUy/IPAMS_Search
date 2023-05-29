@@ -5,3 +5,4 @@ class RecordModel:
         self.abstract = abstract
         self.author = author
         self.field = field
+        self.abstract = id
